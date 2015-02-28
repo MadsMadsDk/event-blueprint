@@ -1,5 +1,15 @@
 var gulp = require('gulp');
 
+// Information about your project. Used when generating the styleguide.
+// Also handy when building your own gulp tasks.
+var project = {
+  name: 'Event Blueprint',
+  css: {
+    unminified: 'default.css',
+    minified: 'default.min.css'
+  }
+};
+
 // Include Our Plugins
 var jshint = require('gulp-jshint');
 var cssnext = require('gulp-cssnext');
@@ -12,19 +22,10 @@ var handlebars = require('gulp-compile-handlebars');
 var dirToJson = require('dir-to-json');
 var fs = require('fs');
 
+/* DO NOT EDIT FROM HERE ON OUT */
+
 var appJsSrc = ['app/src/*.js','app/src/**/.js'];
 var appCssSrc = ['app/src/*.css','app/src/**/.css'];
-
-var jsSrc = ['src/*.js','src/**/.js'];
-var cssSrc = ['src/*.css','src/**/.css'];
-
-var project = {
-  name: 'Event Blueprint',
-  css: {
-    unminified: 'default.css',
-    minified: 'default.min.css'
-  }
-};
 
 // Tasks that compile our styleguide app and launches it
 
@@ -62,12 +63,19 @@ gulp.task('compile-styleguide', ['compile'], function() {
   });
 });
 
+// Compile the styleguide app and launch it
+gulp.task('styleguide', ['compile-styleguide']);
+
+/* YOU MAY EDIT FROM HERE ON OUT */
+
+var jsSrc = ['src/*.js','src/**/.js'];
+var cssSrc = ['src/*.css','src/**/.css'];
 
 // Tasks that compile our project CSS and templates
 
 // Lint Task
 gulp.task('lint', function() {
-    return gulp.src('js/*.js')
+    return gulp.src(jsSrc)
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -104,6 +112,3 @@ gulp.task('watch', function() {
 
 // Default Task
 gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
-
-// Compile the styleguide app and launch it
-gulp.task('styleguide', ['compile-styleguide']);
