@@ -1,0 +1,30 @@
+{
+  "name": "event-blueprint-styleguide",
+  "version": "0.0.1",
+  "description": "Styleguide for EventBlueprint.net",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "~3.8.x"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.x",
+    "gulp-rename": "~1.2.x",
+    "gulp-concat": "~2.5.x",
+    "gulp-uglify": "~1.1.x",
+    "gulp-jshint": "~1.8.4",
+    "gulp-cssnext": "~1.0.x",
+    "gulp-connect": "~2.2.x",
+    "gulp-mocha": "~2.0.x",
+    "gulp-compile-handlebars": "~0.4.x",
+    "merge": "~1.2.0",
+    "coveralls": "~2.11.x",
+    "mocha": "~2.1.x",
+    "istanbul": "~0.3.x",
+    "dir-to-json": "~0.0.3"
+  },
+  "scripts": {
+    "test": "jshint test/test.js && mocha",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "coveralls": "npm coverage && node bin/coveralls.js < coverage/lcov.info"
+  }
+}
