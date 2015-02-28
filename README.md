@@ -15,12 +15,12 @@ $ npm install
 ## Conventions
 For the styleguide to work correctly, you must structure your template files and sample-data files like so (using handlebars for example):
 * src/
-⋅⋅* templates/
-⋅⋅⋅⋅* foo/
-⋅⋅⋅⋅⋅⋅* bar.handlebars
-⋅⋅* sample-data/
-⋅⋅⋅⋅* foo/
-⋅⋅⋅⋅⋅⋅* bar.json
+  * templates/
+   * foo/
+    * bar.handlebars
+  * sample-data/
+   * foo/
+    * bar.json
 
 ## Usage
 This styleguide comes with a couple of commands. It is designed for you to use any library, framework or workflow you'd like to use.
