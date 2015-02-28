@@ -24,8 +24,8 @@ var fs = require('fs');
 
 /* DO NOT EDIT FROM HERE ON OUT */
 
-var appJsSrc = ['app/src/*.js','app/src/**/.js'];
-var appCssSrc = ['app/src/*.css','app/src/**/.css'];
+var appJsSrc = ['./app/src/*.js','./app/src/**/*.js'];
+var appCssSrc = ['./app/src/*.css','./app/src/**/*.css'];
 
 // Tasks that compile our styleguide app and launches it
 
@@ -63,8 +63,30 @@ gulp.task('compile-styleguide', ['compile'], function() {
   });
 });
 
+// Compile app css
+gulp.task('compile-app-css', function() {
+  return gulp.src(appCssSrc)
+      .pipe(cssnext())
+      .pipe(rename('styleguide-master.css'))
+      .pipe(gulp.dest('./www/app/css'));
+});
+
+// Compile app js
+gulp.task('compile-app-js', function() {
+  return gulp.src(appJsSrc)
+      .pipe(jshint())
+      .pipe(concat('styleguide.js'))
+      .pipe(gulp.dest('./www/app/js'));
+});
+
+// Watch Files For Changes
+gulp.task('watch-app', function() {
+    gulp.watch(appJsSrc, ['compile-app-js']);
+    gulp.watch(appCssSrc, ['compile-app-css']);
+});
+
 // Compile the styleguide app and launch it
-gulp.task('styleguide', ['compile-styleguide']);
+gulp.task('styleguide', ['compile-styleguide','compile-app-css','compile-app-js','watch-app']);
 
 /* YOU MAY EDIT FROM HERE ON OUT */
 
@@ -111,4 +133,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
+gulp.task('default', ['lint', 'cssnext', 'scripts', 'watch']);

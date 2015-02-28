@@ -32,7 +32,7 @@ Run the following command
 ```bash
 gulp styleguide
 ```
-This command generates a project.json file from the project information-object inside the project, as well as the directory structure from src/templates.
+This command generates a project.json file from the project information-object inside the project, as well as the directory structure from src/templates, and compiles an index.html file for the www/ folder - and launches a node server, so you can access the styleguide. Neato.
 
 
 ## Why?
