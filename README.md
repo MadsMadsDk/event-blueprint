@@ -2,8 +2,6 @@
 [![build status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 
-
-
 ## Installation
 Coming soon too!
 
