@@ -41,12 +41,29 @@ gulp.task('precompile', function() {
       });
     }
   });
+
+  fs.readdir('./src/templates', function(err, files){
+    if(err) {
+      throw err;
+    } else {
+      for(var dir = 0; dir < files.length; dir++) {
+        fs.readdir('./src/templates/' + files[dir], function(err, filesLv2){
+          if(err) {
+            throw err;
+          } else {
+            console.log(filesLv2);
+          }
+        });
+      }
+    }
+  });
+
 });
 
 gulp.task('compile', ['precompile'], function() {
   return gulp.src('./app/templates/index.handlebars')
     .pipe(handlebars(getData('./app/data/project.json'),{
-      batch : ['./app/templates/partials'],
+      batch : ['./app/templates/partials','./www/partials']
     }))
     .pipe(rename('index.html'))
     .pipe(gulp.dest('./www'));
@@ -94,6 +111,7 @@ gulp.task('styleguide', ['compile-styleguide','compile-app-css','compile-app-js'
 
 var jsSrc = ['./src/*.js','./src/**/*.js'];
 var cssSrc = ['./src/*.css','./src/**/*.css'];
+var tplSrc = ['./src/templates/*.handlebars','./src/templates/**/*.handlebars'];
 
 // Tasks that compile our project CSS and templates
 
@@ -132,6 +150,7 @@ gulp.task('scripts', function() {
 gulp.task('watch', function() {
     gulp.watch(jsSrc, ['lint', 'scripts']);
     gulp.watch(cssSrc, ['cssnext']);
+    gulp.watch(tplSrc, ['compile']);
 });
 
 // Default Task
