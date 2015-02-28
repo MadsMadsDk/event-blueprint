@@ -26,6 +26,7 @@ var fs = require('fs');
 
 var appJsSrc = ['./app/src/*.js','./app/src/**/*.js'];
 var appCssSrc = ['./app/src/*.css','./app/src/**/*.css'];
+var appTplSrc = ['./app/templates/*.handlebars','./app/templates/**/*.handlebars'];
 
 // Tasks that compile our styleguide app and launches it
 
@@ -83,6 +84,7 @@ gulp.task('compile-app-js', function() {
 gulp.task('watch-app', function() {
     gulp.watch(appJsSrc, ['compile-app-js']);
     gulp.watch(appCssSrc, ['compile-app-css']);
+    gulp.watch(appTplSrc, ['compile']);
 });
 
 // Compile the styleguide app and launch it
@@ -90,8 +92,8 @@ gulp.task('styleguide', ['compile-styleguide','compile-app-css','compile-app-js'
 
 /* YOU MAY EDIT FROM HERE ON OUT */
 
-var jsSrc = ['src/*.js','src/**/.js'];
-var cssSrc = ['src/*.css','src/**/.css'];
+var jsSrc = ['./src/*.js','./src/**/*.js'];
+var cssSrc = ['./src/*.css','./src/**/*.css'];
 
 // Tasks that compile our project CSS and templates
 
@@ -104,9 +106,9 @@ gulp.task('lint', function() {
 
 // Postprocess our CSS
 gulp.task('cssnext', function() {
-    return gulp.src(cssSrc)
+    return gulp.src('./src/css/main.css')
         .pipe(cssnext())
-        .pipe(rename(project.css))
+        .pipe(rename(project.css.unminified))
         .pipe(gulp.dest('./www/css'))
         .pipe(rename(project.css.minified))
         .pipe(cssnext({
@@ -133,4 +135,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['lint', 'cssnext', 'scripts', 'watch']);
+gulp.task('default', ['styleguide','lint', 'cssnext', 'scripts', 'watch']);

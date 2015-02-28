@@ -1,0 +1,16 @@
+:root {
+  --black: #000;
+  --gray-darkest: #333;
+  --gray-dark: #666;
+  --gray: #999;
+  --gray-light: #ccc;
+  --gray-lightest: #f3f4f8;
+
+  --brand-blue: #284a7d;
+  --brand-red: #a41e1e;
+  --brand-gray: var(--gray-lightest);
+
+  --sans-serif: 'Roboto', arial, sans-serif;
+  --serif: 'Aleo Regular', arial, sans-serif;
+  --bold-serif: 'Aleo Bold', arial, sans-serif;
+}

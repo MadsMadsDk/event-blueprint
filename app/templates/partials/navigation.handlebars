@@ -1,3 +1,7 @@
-{{#each tree.children}}
-  <a href="{{path}}">{{name}}</a>
-{{/each}}
+<nav class="sg-menu sg-effect-4" id="menu-4">
+	<ul>
+    {{#each tree.children}}
+      <li><a href="{{path}}">{{name}}</a></li>
+    {{/each}}
+	</ul>
+</nav>
