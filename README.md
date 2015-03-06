@@ -43,9 +43,12 @@ All files inside `app/templates/partials` will be compiled as well, so feel free
 ### Launching the styleguide
 Run the following command
 ```bash
-gulp styleguide
+gulp
 ```
 This command generates a project.json file from the project information-object inside the project, as well as the directory structure from src/templates, and compiles an index.html file for the www/ folder - and launches a node server, so you can access the styleguide. Neato.
+
+### Accessing the styleguide
+Open your favorite browser and navigate to http://localhost:3000
 
 
 ## Why?

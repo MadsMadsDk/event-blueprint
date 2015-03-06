@@ -6,13 +6,24 @@ var cssnext = require('gulp-cssnext');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var connect = require('gulp-connect');
 var handlebars = require('gulp-compile-handlebars');
 var dirToJson = require('dir-to-json');
+var colors = require('colors');
 var express = require('express');
 var app = express();
 var hbs = require('hbs');
 var fs = require('fs');
+
+// Information about your project resides inside this file.
+// Used when generating the styleguide.
+// Also handy when building your own gulp tasks.
+var project = {
+  "name": "Event Blueprint",
+  "css": {
+    "unminified": "default.css",
+    "minified": "default.min.css"
+  }
+};
 
 /* DO NOT EDIT FROM HERE ON OUT */
 
@@ -117,15 +128,6 @@ function getData(src) {
   return JSON.parse(fs.readFileSync(src));
 };
 
-// Start server
-gulp.task('compile-styleguide', ['compile'], function() {
-  connect.server({
-    root: 'www',
-    livereload: true,
-    port: 3000
-  });
-});
-
 // Compile app css
 gulp.task('compile-app-css', function() {
   return gulp.src(appCssSrc)
@@ -143,7 +145,13 @@ gulp.task('compile-app-js', function() {
 });
 
 // App routing
-gulp.task('app-route', ['compile-styleguide'], function() {
+gulp.task('launch-app', function() {
+
+  var server = app.listen(3000, function(){
+    var port = server.address().port;
+
+    console.log('Styleguide launched at http://%s:%s'.green, 'localhost', port);
+  });
 
   app.set('view engine', 'handlebars');
   app.set('views', './www/views/');
@@ -155,19 +163,19 @@ gulp.task('app-route', ['compile-styleguide'], function() {
   });
 
   app.get('/:template', function(req, res) {
+
     renderTemplate('./www/views/partials/' + req.params.template + '.handlebars');
     setTimeout( function() {
       res.render('index')
     }, 20);
   });
 
-  app.listen(3000);
-
 });
 
 // Render handlebars template in view
-function renderTemplate(tpl) {
-  gulp.src('./app/templates/index.handlebars')
+function renderTemplate (tpl) {
+  console.log('Rendering '.cyan + tpl.cyan)
+  return gulp.src('./app/templates/layout.handlebars')
     .pipe(handlebars(
       getData('./app/data/project.json'),
         {
@@ -190,4 +198,4 @@ gulp.task('watch-app', function() {
 });
 
 // Compile the styleguide app and launch it
-gulp.task('styleguide', ['compile-styleguide','compile-app-css','compile-app-js','app-route','watch-app']);
+gulp.task('styleguide', ['compile','compile-app-css','compile-app-js','launch-app','watch-app']);

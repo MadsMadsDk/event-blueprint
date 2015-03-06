@@ -1,14 +1,5 @@
 var gulp = require('gulp');
 
-// Information about your project. Used when generating the styleguide.
-// Also handy when building your own gulp tasks.
-var project = {
-  name: 'Event Blueprint',
-  css: {
-    unminified: 'default.css',
-    minified: 'default.min.css'
-  }
-};
 
 // Include Our Plugins
 var jshint = require('gulp-jshint');
@@ -16,12 +7,22 @@ var cssnext = require('gulp-cssnext');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
-var connect = require('gulp-connect');
 var requireDir = require('require-dir');
 var merge = require('merge');
 var handlebars = require('gulp-compile-handlebars');
 var dirToJson = require('dir-to-json');
 var fs = require('fs');
+
+// Information about your project resides inside this file.
+// Used when generating the styleguide.
+// Also handy when building your own gulp tasks.
+var project = {
+  "name": "Event Blueprint",
+  "css": {
+    "unminified": "default.css",
+    "minified": "default.min.css"
+  }
+};
 
 // Load the styleguide app tasks
 var app = requireDir('./app');
