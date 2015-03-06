@@ -18,14 +18,27 @@ For the styleguide to work correctly, you must structure your template files and
   * templates/
     * foo/
       * bar.handlebars
-  * sample-data/
-    * foo/
+    * sample-data/
       * bar.json
+    * partials/
+      * baz.handlebars
 
 ## Usage
 This styleguide comes with a couple of commands. It is designed for you to use any library, framework or workflow you'd like to use.
 Just edit the gulpfile.js in the root, to accommodate any changes you have.
 Be aware not to change the tasks connected to compiling the styleguide though.
+
+### Edit the styleguide layout
+You can edit the layout of the styleguide, by editing these files:
+
+* `app/src/css`
+* `app/src/javascript`
+* `app/templates/layout.handlebars`
+* `app/templates/partials/navigation.handlebars`
+
+All files inside `app/templates/partials` will be compiled as well, so feel free to use partials inside `app/templates/layout.handlebars`.
+
+**Important!** The partial reference `{{> template}}` must be present inside `app/templates/layout.handlebars`, as the app relies on this file during routing.
 
 ### Launching the styleguide
 Run the following command
@@ -37,7 +50,7 @@ This command generates a project.json file from the project information-object i
 
 ## Why?
 There's a lot of styleguide-frameworks out there, but I haven't come across one that ran on node, and by design is language-agnostic.
-Hence this styleguide-app :)
+Hence this styleguide-app, which is pure node/json/handlebars-based - run it everywhere :)
 
 ## Roadmap
 * I'm planning a lot of features. Will update the list of upcoming features here.

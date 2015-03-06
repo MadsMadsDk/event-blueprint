@@ -101,10 +101,14 @@ gulp.task('precompile', function() {
 });
 
 gulp.task('compile', ['precompile'], function() {
-  return gulp.src('./app/templates/index.handlebars')
-          .pipe(handlebars(getData('./app/data/project.json'),{
-            batch : ['./app/templates/partials']
-          }))
+  return gulp.src('./app/templates/layout.handlebars')
+          .pipe(handlebars(
+            getData('./app/data/project.json'),
+              {
+                ignorePartials: true,
+                batch : ['./app/templates/partials']
+              }
+          ))
           .pipe(rename('index.handlebars'))
           .pipe(gulp.dest('./www/views'));
 });
@@ -117,7 +121,8 @@ function getData(src) {
 gulp.task('compile-styleguide', ['compile'], function() {
   connect.server({
     root: 'www',
-    livereload: true
+    livereload: true,
+    port: 3000
   });
 });
 
@@ -149,13 +154,33 @@ gulp.task('app-route', ['compile-styleguide'], function() {
     res.render('index');
   });
 
-  app.get('/atoms', function (req, res) {
-    res.render('partials/atoms');
+  app.get('/:template', function(req, res) {
+    renderTemplate('./www/views/partials/' + req.params.template + '.handlebars');
+    setTimeout( function() {
+      res.render('index')
+    }, 20);
   });
 
   app.listen(3000);
 
 });
+
+// Render handlebars template in view
+function renderTemplate(tpl) {
+  gulp.src('./app/templates/index.handlebars')
+    .pipe(handlebars(
+      getData('./app/data/project.json'),
+        {
+          ignorePartials: true,
+          partials: {
+            template: fs.readFileSync(tpl, {encoding: 'utf-8'})
+          },
+          batch : ['./app/templates/partials']
+        }
+    ))
+    .pipe(rename('index.handlebars'))
+    .pipe(gulp.dest('./www/views'));
+};
 
 // Watch Files For Changes
 gulp.task('watch-app', function() {
