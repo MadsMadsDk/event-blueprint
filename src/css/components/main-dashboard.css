@@ -1,0 +1,39 @@
+.dashboard {display: flex;}
+.dashboard > header {flex: 1; background: var(--gray-darkest); position: relative;}
+.dashboard > header nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+.dashboard > header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.dashboard > header nav ul li {
+  display: block;
+  border-bottom: 1px solid var(--gray-dark);
+}
+.dashboard > header nav ul li a {
+  color: white;
+  padding: 5% 10%;
+  display: block;
+  border: none;
+}
+
+.dashboard > main {flex: 8; padding: 1rem; margin-top: 0;}
+
+
+@media (min-width: 48em) {
+
+}
+
+@media (min-width: 64em) {
+
+}
+
+@media (min-width: 73em) {
+
+}

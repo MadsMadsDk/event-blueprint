@@ -445,6 +445,8 @@ body {
   background: #f3f4f8;
   font-family: 'Roboto', arial, sans-serif;
   font-size: 16px;
+  min-height: 100%;
+  line-height: 1.5;
 }
 
 * + * {
@@ -474,11 +476,16 @@ h6 {font-size: 16px;font-size: 1rem; font-family: 'Aleo Bold', arial, sans-serif
 a,
 a:link {
 	color: #284a7d;
+	text-decoration: none;
+	border-bottom: 1px dotted white;
 }
 
 a:visited {
 	color: rgb(72, 101, 145);
 }
+
+p {}
+p.lead {font-size: 19px;font-size: 1.2rem;}
 .grid-full-width {
   width: 100%;
 }
@@ -500,6 +507,45 @@ a:visited {
 }
 
 /* Main components */
+.dashboard {display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;}
+.dashboard > header {-webkit-box-flex: 1;-webkit-flex: 1;-ms-flex: 1;flex: 1; background: #333; position: relative;}
+.dashboard > header nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+.dashboard > header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.dashboard > header nav ul li {
+  display: block;
+  border-bottom: 1px solid #666;
+}
+.dashboard > header nav ul li a {
+  color: white;
+  padding: 5% 10%;
+  display: block;
+  border: none;
+}
+
+.dashboard > main {-webkit-box-flex: 8;-webkit-flex: 8;-ms-flex: 8;flex: 8; padding: 16px; padding: 1rem; margin-top: 0;}
+
+
+@media (min-width: 48em) {
+
+}
+
+@media (min-width: 64em) {
+
+}
+
+@media (min-width: 73em) {
+
+}
 
 /* Components */
 /* Base widget styling */

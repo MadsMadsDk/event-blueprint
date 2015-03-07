@@ -31,7 +31,7 @@ var app = requireDir('./app');
 
 var jsSrc = ['./src/*.js','./src/**/*.js'];
 var cssSrc = ['./src/*.css','./src/**/*.css'];
-var tplSrc = ['./src/templates/*.handlebars','./src/templates/**/*.handlebars'];
+var tplSrc = ['./src/templates/*.handlebars','./src/templates/**/*.handlebars','./src/templates/**/**/*.handlebars'];
 
 // Tasks that compile our project CSS and templates
 

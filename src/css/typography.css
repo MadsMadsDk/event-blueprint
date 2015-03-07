@@ -12,8 +12,13 @@ h6 {font-size: var(--font-size-h6); font-family: var(--font-bold-serif);}
 a,
 a:link {
 	color: var(--primary-action);
+	text-decoration: none;
+	border-bottom: 1px dotted white;
 }
 
 a:visited {
 	color: color(var(--primary-action) tint(15%));
 }
+
+p {}
+p.lead {font-size: 1.2rem;}
