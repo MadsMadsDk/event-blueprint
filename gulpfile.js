@@ -45,7 +45,11 @@ gulp.task('lint', function() {
 // Postprocess our CSS
 gulp.task('cssnext', function() {
     return gulp.src('./src/css/main.css')
-        .pipe(cssnext())
+        .pipe(cssnext({
+            import: {
+                path: 'src/css'
+            }
+        }))
         .pipe(rename(project.css.unminified))
         .pipe(gulp.dest('./www/css'))
         .pipe(rename(project.css.minified))
@@ -66,12 +70,25 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('./dist/js'));
 });
 
+// Move fonts
+gulp.task('fonts', function() {
+    return gulp.src('./src/fonts/*')
+        .pipe(gulp.dest('./www/css/fonts'))
+        .pipe(gulp.dest('./dist/css/fonts'));
+});
+// Move gfx
+gulp.task('gfx', function() {
+    return gulp.src('./src/gfx/*')
+        .pipe(gulp.dest('./www/css/gfx'))
+        .pipe(gulp.dest('./dist/css/gfx'));
+});
+
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch(jsSrc, ['lint', 'scripts']);
-    gulp.watch(cssSrc, ['cssnext']);
+    gulp.watch(cssSrc, ['cssnext','gfx','fonts']);
     gulp.watch(tplSrc, ['compile']);
 });
 
 // Default Task
-gulp.task('default', ['styleguide','lint', 'cssnext', 'scripts', 'watch']);
+gulp.task('default', ['styleguide','lint', 'cssnext','gfx','fonts', 'scripts', 'watch']);

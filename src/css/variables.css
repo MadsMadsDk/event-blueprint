@@ -10,7 +10,21 @@
   --brand-red: #a41e1e;
   --brand-gray: var(--gray-lightest);
 
-  --sans-serif: 'Roboto', arial, sans-serif;
-  --serif: 'Aleo Regular', arial, sans-serif;
-  --bold-serif: 'Aleo Bold', arial, sans-serif;
+  --font-sans-serif: 'Roboto', arial, sans-serif;
+  --font-serif: 'Aleo Regular', arial, sans-serif;
+  --font-bold-serif: 'Aleo Bold', arial, sans-serif;
+
+  --primary-action: var(--brand-blue);
+  --secondary-action: var(--brand-gray);
+
+  --danger: var(--brand-red);
+
+  --base-font-size: 1rem;
+
+  --font-size-h1: 2.8rem;
+  --font-size-h2: 2.4rem;
+  --font-size-h3: 2.0rem;
+  --font-size-h4: 1.6rem;
+  --font-size-h5: 1.2rem;
+  --font-size-h6: 1rem;
 }

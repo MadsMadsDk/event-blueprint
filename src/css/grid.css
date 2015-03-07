@@ -1,0 +1,19 @@
+.grid-full-width {
+  width: 100%;
+}
+
+.grid-one-half {
+  width: 50%;
+}
+
+.grid-one-third {
+  width: calc(100%/3);
+}
+
+.grid-two-third {
+  width: calc(100%/3) * 2;
+}
+
+.grid-one-fourth {
+  width: 25%;
+}

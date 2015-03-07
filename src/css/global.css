@@ -1,0 +1,17 @@
+body {
+  background: var(--brand-gray);
+  font-family: var(--font-sans-serif);
+  font-size: 16px;
+}
+
+* + * {
+	margin-top: 2rem;
+}
+
+.margins-narrow * + * {
+  margin-top: 1rem;
+}
+
+.margins-off * + * {
+  margin-top: 0;
+}

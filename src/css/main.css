@@ -1,6 +1,13 @@
-@import "normalize.css";
-@import "variables.css";
+@import "normalize";
+@import "fonts";
+@import "variables";
+@import "global";
+@import "typography";
+@import "grid";
+@import "utilities";
 
-body {
-  background: var(--brand-gray);
-}
+/* Main components */
+@import "components/main-dashboard";
+
+/* Components */
+@import "components/widget";

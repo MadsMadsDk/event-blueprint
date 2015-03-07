@@ -155,6 +155,8 @@ gulp.task('launch-app', function() {
 
   app.set('view engine', 'handlebars');
   app.set('views', './www/views/');
+  app.set('root','./www');
+  app.use(express.static('www'));
   app.engine('handlebars', require('hbs').__express);
   hbs.registerPartials('./www/views/partials');
 

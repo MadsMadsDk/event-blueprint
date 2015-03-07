@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
+
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
 /**
@@ -422,7 +424,85 @@ td,
 th {
   padding: 0;
 }
+@font-face {
+  font-family: 'Aleo Regular';
+  src: url('fonts/aleo-regular-webfont.eot');
+  src: local('☺︎'),
+    url("fonts/aleo-regular-webfont.woff") format("woff"),
+    url("fonts/aleo-regular-webfont.otf") format("opentype"),
+    url("fonts/aleo-regular-webfont.svg#grablau") format("svg");
+}
 
+@font-face {
+  font-family: 'Aleo Bold';
+  src: url('fonts/aleo-bold-webfont.eot');
+  src: local('☺︎'),
+    url("fonts/aleo-bold-webfont.woff") format("woff"),
+    url("fonts/aleo-bold-webfont.otf") format("opentype"),
+    url("fonts/aleo-bold-webfont.svg#grablau") format("svg");
+}
 body {
   background: #f3f4f8;
+  font-family: 'Roboto', arial, sans-serif;
+  font-size: 16px;
+}
+
+* + * {
+	margin-top: 32px;
+	margin-top: 2rem;
+}
+
+.margins-narrow * + * {
+  margin-top: 16px;
+  margin-top: 1rem;
+}
+
+.margins-off * + * {
+  margin-top: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Aleo Regular', arial, sans-serif;
+}
+
+h1 {font-size: 44px;font-size: 2.8rem;}
+h2 {font-size: 38px;font-size: 2.4rem;}
+h3 {font-size: 32px;font-size: 2.0rem;}
+h4 {font-size: 25px;font-size: 1.6rem;}
+h5 {font-size: 19px;font-size: 1.2rem;}
+h6 {font-size: 16px;font-size: 1rem; font-family: 'Aleo Bold', arial, sans-serif;}
+
+a,
+a:link {
+	color: #284a7d;
+}
+
+a:visited {
+	color: rgb(72, 101, 145);
+}
+.grid-full-width {
+  width: 100%;
+}
+
+.grid-one-half {
+  width: 50%;
+}
+
+.grid-one-third {
+  width: 33.33333%;
+}
+
+.grid-two-third {
+  width: 33.33333% * 2;
+}
+
+.grid-one-fourth {
+  width: 25%;
+}
+
+/* Main components */
+
+/* Components */
+/* Base widget styling */
+.widget {
+  
 }
